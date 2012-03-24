@@ -1,5 +1,8 @@
 package recepção;
 
+import java.util.Date;
+import java.util.List;
+
 public class fachada {
 	private GerenteHospede gerenteHospede;
 	private GerenteFuncionario gerenteFuncionario;
@@ -9,7 +12,7 @@ public class fachada {
 	public fachada(){
 		this.gerenteHospede = new GerenteHospede();
 		this.gerenteFuncionario=new GerenteFuncionario();
-		this.gerenteHotel=new gerenteHotel();
+		this.gerenteHotel=new GerenteHotel();
 		this.gerenteHospegem= new GerenteHospedagem();
 	}
 	
@@ -17,7 +20,7 @@ public class fachada {
 	 * Responsabilidade gerenteFuncionario
 	 * Cadastra um funcionário no sistema.
 	 */
-	public void cadastroFuncionario(){
+	public void cadastroFuncionario(Funcionario f){
 		
 	}
 	
@@ -25,32 +28,32 @@ public class fachada {
 	 * Responsabilidade gerenteFuncionario
 	 * Remove um funcionário do sistema.
 	 */
-	public void removerFuncionario(){
-		
+	public Funcionario removerFuncionario(String cpf){
+		return null;
 	}
 	
 	/*
 	 * Responsabilidade gerenteFuncionario
 	 * Consulta os dados de um funcionário.
 	 */
-	public void consultarFuncionario(){
-		
+	public Funcionario consultarFuncionario(String nome){
+		return null;
 	}
 	
 	/*
 	 * Responsabilidade gerenteFuncionario
 	 * Informa uma lista com os funcionários atuais, mostrando nome, cpf, função.
 	 */
-	public void informaListaFuncionario(){
-		
+	public List<Funcionario> informaListaFuncionario(){
+		return null;
 	}
 	
 	
 	/*
 	 * Responsabilidade gerenteFuncionario
-	 * Alterar dados de um funcionário.
+	 * Alterar dados de um funcionário, procura esse funcionário(com o mesmo cpf) na lista e sobrescreve com f.
 	 */
-	public void alterarDadosFuncionario(){
+	public void alterarDadosFuncionario(Funcionario f){
 		
 	}
 	
@@ -58,7 +61,7 @@ public class fachada {
 	 * Responsabilidade gerenteHospede
 	 * Cadastra um hospede no sistema.
 	 */
-	public void cadastroHospede(){
+	public void cadastroHospede(Hospede h){
 		
 	}
 	
@@ -66,15 +69,15 @@ public class fachada {
 	 * Responsabilidade gerenteHospede
 	 * Remove um hospede do sistema.
 	 */
-	public void removerHospede(){
-		
+	public Hospede removerHospede(String cpf){
+		return null;
 	}
 	
 	/*
 	 * Responsabilidade gerenteHospede
-	 * Altera os dados do hospede cadastrado no sistema.
+	 * Altera os dados do hospede cadastrado no sistema, procura esse hospede(com o mesmo cpf) na lista e sobrescreve com h.
 	 */
-	public void alterarDadosHospede(){
+	public void alterarDadosHospede(Hospede h){
 		
 	}
 
@@ -82,7 +85,7 @@ public class fachada {
 	 * Responsabilidade gerenteHospede
 	 * Consulta histórico de hospedagem de um hospede.
 	 */
-	public void consultarHospede(){
+	public void consultarHospede(String cpf){
 		
 	}
 	
@@ -90,7 +93,7 @@ public class fachada {
 	 * Responsabilidade gerenteHotel
 	 * Cadastra um quarto no sistema.
 	 */
-	public void cadastraQuarto(){
+	public void cadastraQuarto(Quarto q){
 		
 	}
 	
@@ -98,15 +101,15 @@ public class fachada {
 	 * Responsabilidade gerenteHotel
 	 * remover um quarto no sistema.
 	 */
-	public void removerQuarto(){
-		
+	public Quarto removerQuarto(int numero){
+		return null;
 	}
 	
 	/*
 	 * Responsabilidade gerenteHotel
 	 * Altera a discrição de um quarto no sistema
 	 */
-	public void alterarDiscriçãoQuarto(){
+	public void alterarDiscricaoQuarto(String discrição, int numero){
 		
 	}
 	
@@ -114,7 +117,7 @@ public class fachada {
 	 * Responsabilidade gerenteHotel
 	 * Altera o preço de um quarto.
 	 */
-	public void alterarPrecoQuarto(){
+	public void alterarPrecoQuarto(int numero, double preco){
 		
 	}
 	
@@ -122,7 +125,7 @@ public class fachada {
 	 * Responsabilidade gerenteHospedagem
 	 * Realiza uma reserva de um quarto no sistema.
 	 */
-	public void ralizarReserva(){
+	public void ralizarReserva(Reserva r){
 		
 	}
 	
@@ -130,7 +133,7 @@ public class fachada {
 	 * Responsabilidade gerenteHospedagem
 	 * Realiza hospedagem!
 	 */
-	public void realizarHospedagem(){
+	public void realizarHospedagem(Hospedagem h){
 		
 	}
 	
@@ -138,31 +141,24 @@ public class fachada {
 	 * Responsabilidade gerenteHospedagem
 	 * Confere se um quarto esta vago.
 	 */
-	public void isQuartoVago(){
-		
+	public boolean isQuartoVago(int numero, Date dataEntrada, Date dataSaida){
+		return true;
 	}
+	
 	
 	/*
 	 * Responsabilidade gerenteHospedagem
-	 * Fecha conta parcial.
+	 * Fecha conta total ou parcial.
 	 */
-	public void fechaContaParcial(){
-		
-	}
-	
-	/*
-	 * Responsabilidade gerenteHospedagem
-	 * Fecha conta total, ou seja, o hospede encerra sua hospedagem.
-	 */
-	public void fechaConta(){
-		
+	public double fechaConta(int numero, boolean fechaContaTotal){
+		return 0.0;
 	}
 	/*
 	 * Responsabilidade gerenteHospedagem
 	 * Informa uma lista com todas as hospedagens de um determinado dia, informando quarto e o nome do hospede.
 	 */
-	public void informaListaHospedagemDia(){
-		
+	public List<Hospedagem> informaListaHospedagemDia(Date dia){
+		return null;
 	}
 	
 }
