@@ -117,7 +117,7 @@ public class fachada {
 	 * Responsabilidade gerenteHotel
 	 * Altera o preço de um quarto.
 	 */
-	public void alterarPrecoQuarto(int numero, double preco){
+	public void alterarPrecoQuarto(String tipoDeQuarto, double preco){
 		
 	}
 	
