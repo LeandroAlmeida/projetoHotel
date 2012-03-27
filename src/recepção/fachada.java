@@ -21,7 +21,7 @@ public class fachada {
 	 * Cadastra um funcionário no sistema.
 	 */
 	public void cadastroFuncionario(Funcionario f){
-		
+		gerenteFuncionario.addFuncionario(f);
 	}
 	
 	/*
@@ -36,8 +36,8 @@ public class fachada {
 	 * Responsabilidade gerenteFuncionario
 	 * Consulta os dados de um funcionário.
 	 */
-	public Funcionario consultarFuncionario(String nome){
-		return null;
+	public Funcionario consultarFuncionario(String cpf){
+		return gerenteFuncionario.consultaFuncionario(cpf);
 	}
 	
 	/*
@@ -85,8 +85,8 @@ public class fachada {
 	 * Responsabilidade gerenteHospede
 	 * Consulta histórico de hospedagem de um hospede.
 	 */
-	public void consultarHospede(String cpf){
-		
+	public Hospede consultarHospede(String cpf){
+		return null;
 	}
 	
 	/*
@@ -109,7 +109,7 @@ public class fachada {
 	 * Responsabilidade gerenteHotel
 	 * Altera a discrição de um quarto no sistema
 	 */
-	public void alterarDiscricaoQuarto(String discrição, int numero){
+	public void alterarDescricaoQuarto(String descrição, String tipoDeQuarto){
 		
 	}
 	
@@ -125,7 +125,7 @@ public class fachada {
 	 * Responsabilidade gerenteHospedagem
 	 * Realiza uma reserva de um quarto no sistema.
 	 */
-	public void ralizarReserva(Reserva r){
+	public void realizarReserva(Reserva r){
 		
 	}
 	
