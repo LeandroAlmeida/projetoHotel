@@ -1,30 +1,22 @@
 package recepção;
 
-public abstract class Quarto {
+public class Quarto {
 	
-	private Double valor;
+	
 	private int numero;
-	private String descricao;
+	TipoQuarto tipo;
 	
-	public Double getValor() {
-		return valor;
+	public Quarto(){
+		this.numero=0;
+		this.tipo=new TipoQuarto();
 	}
-	public void setValor(Double valor) {
-		this.valor = valor;
-	}
+
 	public int getNumero() {
 		return numero;
 	}
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
 	
-	public String getDescricao(){
-		return descricao;
-	}
-	public abstract String getTipo();
 	
 }

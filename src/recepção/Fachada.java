@@ -3,13 +3,13 @@ package recepção;
 import java.util.Date;
 import java.util.List;
 
-public class fachada {
+public class Fachada {
 	private GerenteHospede gerenteHospede;
 	private GerenteFuncionario gerenteFuncionario;
 	private GerenteHotel gerenteHotel;
 	private GerenteHospedagem gerenteHospegem;
 	
-	public fachada(){
+	public Fachada(){
 		this.gerenteHospede = new GerenteHospede();
 		this.gerenteFuncionario=new GerenteFuncionario();
 		this.gerenteHotel=new GerenteHotel();
