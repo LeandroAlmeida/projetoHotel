@@ -29,11 +29,11 @@ public class Hospede {
 		p.setNome(nome);
 	}
 
-	public Date getDataNacimento() {
+	public String getDataNacimento() {
 		return p.getDataNacimento();
 	}
 
-	public void setDataNacimento(Date dataNacimento) {
+	public void setDataNacimento(String dataNacimento) {
 		p.setDataNacimento(dataNacimento);
 	}
 
@@ -55,5 +55,17 @@ public class Hospede {
 	
 	public String toString(){
 		return p.toString();
+	}
+	public void setEmail(String email){
+		p.setEmail(email);
+	}
+	public String getEmail(){
+		return p.getEmail();
+	}
+	public void setTel(String tel){
+		p.setEmail(tel);
+	}
+	public String getTel(){
+		return p.getTel();
 	}
 }
