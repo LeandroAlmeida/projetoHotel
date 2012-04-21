@@ -1,6 +1,6 @@
 package recepção;
 
-import java.util.Date;
+
 
 public class Funcionario {
 	
@@ -20,11 +20,11 @@ public class Funcionario {
 		p.setNome(nome);
 	}
 
-	public Date getDataNacimento() {
+	public String getDataNacimento() {
 		return p.getDataNacimento();
 	}
 
-	public void setDataNacimento(Date dataNacimento) {
+	public void setDataNascimento(String dataNacimento) {
 		p.setDataNacimento(dataNacimento);
 	}
 
@@ -44,6 +44,19 @@ public class Funcionario {
 		p.setRg(rg);
 	}
 
+	public void setEmail(String email){
+		p.setEmail(email);
+	}
+	public String getEmail(){
+		return p.getEmail();
+	}
+	public void setTel(String tel){
+		p.setEmail(tel);
+	}
+	public String getTel(){
+		return p.getTel();
+	}
+	
 	public String getProfissao() {
 		return profissao;
 	}
@@ -51,9 +64,42 @@ public class Funcionario {
 	public void setProfissao(String proficao) {
 		this.profissao = proficao;
 	}
-
-	
+		
 	public String toString(){
 		return p.toString()+"\nprofissão: "+this.profissao;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((p == null) ? 0 : p.hashCode());
+		result = prime * result
+				+ ((profissao == null) ? 0 : profissao.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Funcionario other = (Funcionario) obj;
+		if (p == null) {
+			if (other.p != null)
+				return false;
+		} else if (!p.equals(other.p))
+			return false;
+		if (profissao == null) {
+			if (other.profissao != null)
+				return false;
+		} else if (!profissao.equals(other.profissao))
+			return false;
+		return true;
+	}
+	
+	
 }
