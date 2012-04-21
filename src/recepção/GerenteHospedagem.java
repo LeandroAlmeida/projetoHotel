@@ -80,7 +80,7 @@ public class GerenteHospedagem {
 		double valor=0.0;
 		Hospedagem hospedagem=null;
 		for(Estadia e:this.listaDeEstadia)
-			if(e.getHospede().getCpf().equals(cpf) && e.getTipoEstadia().equals("Hospedagem")){//acho a hospedagem
+			if(e.getHospede().getCpf().equals(cpf) && e.getTipoEstadia().equals("Hospedagem")){//encontrar a hospedagem
 				hospedagem=(Hospedagem) e;
 				break;
 			}
@@ -92,11 +92,11 @@ public class GerenteHospedagem {
 			valor+=c.getValorConsumo();//vai somando o valor de cada item na lista de consumo
 		
 		if(fechaContaTotal){
-		valor=hospedagem.getQuarto().getValor() * calcularDias(hospedagem.getDataEntrada(),new Date());//somo o valor do quarto
+		valor=hospedagem.getQuarto().getValor() * calcularDias(hospedagem.getDataEntrada(),new Date());//multiplica o valor do quarto pela quantidade dias de hospedagem
 		listaDeEstadia.remove(hospedagem);
 		}
 		else{
-			valor=hospedagem.getQuarto().getValor() * calcularDias(hospedagem.getDataEntrada(),new Date());//multiplica o valor do quarto pela quantidade de dia(s)
+			valor=hospedagem.getQuarto().getValor() * calcularDias(hospedagem.getDataEntrada(),new Date());//multiplicar o valor do quarto pela quantidade de dia(s) de hospedagem
 			hospedagem.setDataEntrada(new Date());
 		}
 		
