@@ -3,39 +3,52 @@ package recepção;
 import java.util.Date;
 import java.util.LinkedList;
 
-public class Hospedagem {
-	private Date dataEntrada;
-	private Date dataSaida;
-	private Quarto quarto;
+public class Hospedagem extends Estadia{
+	
 	LinkedList<Consumo> consumo;
 	public Hospedagem(){
-		dataEntrada=null;
-		dataSaida=null;
-		quarto=null;
 		consumo=new LinkedList<Consumo>();
 	}
-	public Date getDataEntrada() {
-		return dataEntrada;
-	}
-	public void setDataEntrada(Date dataEntrada) {
-		this.dataEntrada = dataEntrada;
-	}
-	public Date getDataSaida() {
-		return dataSaida;
-	}
-	public void setDataSaida(Date dataSaida) {
-		this.dataSaida = dataSaida;
-	}
-	public Quarto getQuarto() {
-		return quarto;
-	}
-	public void setQuarto(Quarto quarto) {
-		this.quarto = quarto;
+	
+	public void addConsumo(Consumo c){
+		consumo.add(c);
 	}
 	
+	public LinkedList<Consumo> getListaDeComsumo(){
+		return this.consumo;
+	}
 	
+	public String getTipoEstadia(){
+		return "Hospedagem";
+	}
 	
 	public String toString(){
-		return "data de Entrada: "+this.dataEntrada+"\nData de saida: "+this.dataSaida+"\n"+quarto.toString();
+		return "";
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((consumo == null) ? 0 : consumo.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Hospedagem other = (Hospedagem) obj;
+		if (consumo == null) {
+			if (other.consumo != null)
+				return false;
+		} else if (!consumo.equals(other.consumo))
+			return false;
+		return true;
+	}
+	
 }
