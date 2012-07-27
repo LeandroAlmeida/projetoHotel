@@ -1,32 +1,32 @@
 package recepção;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-public class GerenteFuncionario {
+public class GerenteFuncionario implements Serializable {
 
-	public LinkedList<Funcionario> listaFuncionarios;
 
-	public GerenteFuncionario() {
+	
+	//public LinkedList<Funcionario> listaFuncionarios; 
 
-		listaFuncionarios = new LinkedList<Funcionario>();
-
-	}
 
 	public void cadastroFuncionario(Funcionario f) {
-		for(Funcionario fun:this.listaFuncionarios){
-			if(fun.getCpf().equals(f.getCpf()))
-				throw new Excecao("Cpf ja cadastrado!!!");
+			for(Funcionario fun:GerentePersistencia.getInstance().getListaFuncionarios()){
+				if(fun.getCpf().equals(f.getCpf()))
+					throw new Excecao("Cpf ja cadastrado!!!");
+			}
+			GerentePersistencia.getInstance().getListaFuncionarios().add(f);
+			GerentePersistencia.persistir();
 		}
-		listaFuncionarios.add(f);
 
-	}
 
 	public Funcionario removerFuncionario(String cpf) {
 		Funcionario funRemovido;
-		for (Funcionario f : this.listaFuncionarios) {
+		for (Funcionario f : GerentePersistencia.getInstance().getListaFuncionarios()) {
 			if (f.getCpf().equals(cpf)) {
-				listaFuncionarios.remove(f);
+				GerentePersistencia.getInstance().getListaFuncionarios().remove(f);
+				GerentePersistencia.persistir();
 				funRemovido = f;
 				return funRemovido;
 			}
@@ -36,7 +36,7 @@ public class GerenteFuncionario {
 
 	public Funcionario consultarFuncionario(String cpf) {
 		
-		for (Funcionario f : this.listaFuncionarios) {
+		for (Funcionario f : GerentePersistencia.getInstance().getListaFuncionarios()) {
 			if (f.getCpf().equals(cpf))
 				return f;
 		}
@@ -45,15 +45,16 @@ public class GerenteFuncionario {
 	}
 
 	public List<Funcionario> informaListaFuncionario() {
-		return listaFuncionarios;
+		return GerentePersistencia.getInstance().getListaFuncionarios();
 
 	}
 
 	public Funcionario alterarDadosFuncionario(Funcionario fun){
-			for (Funcionario f : this.listaFuncionarios) {
+			for (Funcionario f : GerentePersistencia.getInstance().getListaFuncionarios()) {
 					if(fun.getCpf().equals(f.getCpf())){
 						f=fun;
-					return f;
+						GerentePersistencia.persistir();
+						return f;
 					}
 				}
 			throw new Excecao("Funcionario não existente");

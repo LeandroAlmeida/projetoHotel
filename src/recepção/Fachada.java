@@ -10,12 +10,15 @@ public class Fachada {
 	private GerenteFuncionario gerenteFuncionario;
 	private GerenteHotelQuarto gerenteHotel;
 	private GerenteHospedagem gerenteHospedagem;
+
 	
 	public Fachada(){
+	//	GerentePersistencia.recuperar();
 		this.gerenteHospede = new GerenteHospede();
 		this.gerenteFuncionario=new GerenteFuncionario();
 		this.gerenteHotel=new GerenteHotelQuarto();
-		this.gerenteHospedagem= new GerenteHospedagem();
+		this.gerenteHospedagem= new GerenteHospedagem();	
+		
 	}
 	
 	/*

@@ -1,20 +1,32 @@
 package recepção;
 
 import static org.junit.Assert.*;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Serializable;
+import java.io.Writer;
+
 import junit.framework.Assert;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 public class TestFuncionario {
 	
 	private Fachada fachada;
-	
+	File f;
 	@Before
-	public void iniciar(){
+	public void iniciar() throws IOException{
+		/*if(new File("dados.bin").exists()){
+			GerentePersistencia.apagarConteudoArquivo();
+		}*/
 		fachada= new Fachada();
 	}
-
+	
 	@Test
 	public void TestcadastroFuncionario() {
 		Funcionario funcionario1= criarFuncionarioModelo();

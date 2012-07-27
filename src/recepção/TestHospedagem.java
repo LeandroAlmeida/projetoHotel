@@ -76,7 +76,7 @@ public class TestHospedagem {
 		Hospedagem hospedagem1= criarHospedagemModelo();
 		fachada.realizarHospedagem(hospedagem1);
 		Consumo c=new Consumo();
-		Assert.assertEquals(fachada.fechaConta("23", true), 200.00);//fechar conta total
+		Assert.assertEquals(fachada.fechaConta("23", true), 900.00);//fechar conta total
 		fachada.consultaHospedagem("23");//não existe mais, depois de fecha conta total a hospedagem é removida
 	}
 	
@@ -84,7 +84,7 @@ public class TestHospedagem {
 	public void testFechaContaParcial() throws ParseException{
 		Hospedagem hospedagem1= criarHospedagemModelo();
 		fachada.realizarHospedagem(hospedagem1);
-		Assert.assertEquals(fachada.fechaConta("23", false), 200.00);
+		Assert.assertEquals(fachada.fechaConta("23", false), 900.00);
 		Assert.assertEquals(fachada.consultaHospedagem("23").getHospede(),hospedagem1.getHospede());//Hospedagem continua no sistema
 	}
 	

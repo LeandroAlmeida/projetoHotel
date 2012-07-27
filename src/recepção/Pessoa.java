@@ -1,8 +1,9 @@
 package recepção;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Pessoa {
+public class Pessoa implements Serializable {
 	private String nome;
 	private String dataNacimento;
 	private String cpf;

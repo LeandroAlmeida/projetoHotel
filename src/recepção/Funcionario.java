@@ -1,8 +1,10 @@
 package recepção;
 
+import java.io.Serializable;
 
 
-public class Funcionario {
+
+public class Funcionario implements Serializable {
 	
 	private String profissao;
 	private Pessoa p;
