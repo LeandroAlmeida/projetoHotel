@@ -53,7 +53,7 @@ public class Funcionario implements Serializable {
 		return p.getEmail();
 	}
 	public void setTel(String tel){
-		p.setEmail(tel);
+		p.setTel(tel);
 	}
 	public String getTel(){
 		return p.getTel();
@@ -102,6 +102,4 @@ public class Funcionario implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
 }

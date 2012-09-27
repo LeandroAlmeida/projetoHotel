@@ -13,7 +13,7 @@ public class Fachada {
 
 	
 	public Fachada(){
-	//	GerentePersistencia.recuperar();
+		GerentePersistencia.recuperar();
 		this.gerenteHospede = new GerenteHospede();
 		this.gerenteFuncionario=new GerenteFuncionario();
 		this.gerenteHotel=new GerenteHotelQuarto();
@@ -127,7 +127,7 @@ public class Fachada {
 	
 	/*
 	 * Responsabilidade gerenteHotel
-	 * Altera o preço de um tipo de quarto no sistem,  exemplo: altera a preço de todos quartos do tipo básico.
+	 * Altera o preço de um tipo de quarto no sistema,  exemplo: altera a preço de todos quartos do tipo básico.
 	 */
 	public void alterarPrecoQuarto(double preco,String tipoDeQuarto){
 		gerenteHotel.alterarPrecoQuarto(tipoDeQuarto, preco);
@@ -163,7 +163,7 @@ public class Fachada {
 		return gerenteHospedagem.cancelarReserva(Cpf);
 	}
 	/*
-	 * Confirma uma reserva no sistema, ao confirmar os dados dessa reserva passa para uma hospedagem e ela e removida
+	 * Confirma uma reserva no sistema, ao confirmar os dados dessa reserva passa para uma hospedagem e ela é removida.
 	 */
 	public void confirmaReserva(String Cpf){
 		gerenteHospedagem.confirmarReserva(Cpf);
@@ -192,7 +192,7 @@ public class Fachada {
 	
 	/*
 	 * Responsabilidade gerenteHospedagem
-	 * Conferir se um quarto esta vago.
+	 * Conferir se um quarto está vago.
 	 */
 	public boolean isQuartoVago(int numero, Date dataEntrada, Date dataSaida){
 		return gerenteHospedagem.isQuartoVago(numero,dataEntrada,dataSaida);
@@ -203,8 +203,8 @@ public class Fachada {
 	 * Responsabilidade gerenteHospedagem
 	 * Fecha conta total ou parcial.
 	 */
-	public double fechaConta(String cpf, boolean fechaContaTotal) throws ParseException{
-		return gerenteHospedagem.fechaConta(cpf, fechaContaTotal);
+	public double fechaConta(String cpf, Date dia) throws ParseException{
+		return gerenteHospedagem.fechaConta(cpf, dia);
 	}
 	/*
 	 * Responsabilidade gerenteHospedagem
@@ -214,8 +214,18 @@ public class Fachada {
 	public LinkedList<Reserva> informaListaReservasPendentes(Date dia){
 		return gerenteHospedagem.informaListaDeReservasPendentes(dia);
 	}
+	/*
+	 * Responsabilidade gerenteHospedagem
+	 * Informa uma lista com todas as hospedagens que encerrão neste dia.
+	 */
+	public LinkedList<Hospedagem> informaListaHospedagemEncerraNesteDia(Date dia){
+		return gerenteHospedagem.informaListaHospedagemEncerraNesteDia(dia);
+	}
 	
-	
+	/*
+	 * Responsabilidade gerenteHospedagem
+	 * Adicionar um consumo a uma hospedagem, através do numero do quarto
+	 */
 	public void adicionarConsumo(int numero, Consumo c){
 		gerenteHospedagem.addConsumoHospedagem(numero,c);
 	}

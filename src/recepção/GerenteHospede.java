@@ -5,59 +5,60 @@ import java.util.List;
 
 public class GerenteHospede {
 
-	public LinkedList<Hospede> listaHospedes;
-
-	public GerenteHospede() {
-
-		this.listaHospedes = new LinkedList<Hospede>();
-
-	}
+	//public LinkedList<Hospede> listaHospedes;
 
 	public void cadastrarHospede(Hospede h) {
-		for(Hospede hos:this.listaHospedes){
+		for(Hospede hos:GerentePersistencia.getInstance().getListaHospedes()){
 			if(hos.getCpf().equals(h.getCpf()))
-				throw new Excecao("Cpf ja cadastrado!!!");
+				throw new Excecao("Cpf já cadastrado!!!");
 		}
-		this.listaHospedes.add(h);
-
+		GerentePersistencia.getInstance().getListaHospedes().add(h);
+		GerentePersistencia.persistir();
 	}
 
 	public Hospede removerHospede(String cpf) {
 		Hospede HospedeRemovido;
-		for (Hospede h : this.listaHospedes) {
+		for (Hospede h : GerentePersistencia.getInstance().getListaHospedes()) {
 			if (h.getCpf().equals(cpf)) {
-				this.listaHospedes.remove(h);
+				GerentePersistencia.getInstance().getListaHospedes().remove(h);
+				GerentePersistencia.persistir();
 				HospedeRemovido = h;
 				return HospedeRemovido;
 			}
 		}
-		throw new Excecao("Hospede não existente!!!");
+		throw new Excecao("Hóspede não existente!!!");
 	}
 
 	public Hospede consultarHospede(String cpf) {
 		
-		for (Hospede h : this.listaHospedes) {
+		for (Hospede h : GerentePersistencia.getInstance().getListaHospedes()) {
 			if (h.getCpf().equals(cpf))
 				return h;
 		}
-		throw new Excecao("Hospede não existente!!!");
+		throw new Excecao("Hóspede não existente!!!");
 
 	}
 
 
 	public Hospede alterarDadosHospede(Hospede hos){
-			for (Hospede h : this.listaHospedes) {
+			for (Hospede h : GerentePersistencia.getInstance().getListaHospedes()) {
 					if(hos.getCpf().equals(h.getCpf())){
 						h=hos;
+						GerentePersistencia.persistir();
 					return h;
 					}
 				}
-			throw new Excecao("Hospede não existente!!!");
+			throw new Excecao("Hóspede não existente!!!");
 	}
-//falta essa funçao aqui e no teste, não esquece!!
+	
 	public List<Hospedagem> consultarHistorico(String cpf) {
-		// TODO Auto-generated method stub
-		return null;
+		for (Hospede h : GerentePersistencia.getInstance().getListaHospedes()) {
+			if (h.getCpf().equals(cpf)) {
+				return h.getHistorico();
+			}
+		}
+		throw new Excecao("Hóspede não existente!!!");
 	}
+	
 	
 }

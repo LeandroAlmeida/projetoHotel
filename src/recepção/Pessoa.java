@@ -12,11 +12,11 @@ public class Pessoa implements Serializable {
 	private String email;
 	
 	public String getTel() {
-		return Tel;
+		return this.Tel;
 	}
 
 	public void setTel(String tel) {
-		Tel = tel;
+		this.Tel = tel;
 	}
 
 	public String getEmail() {
@@ -124,5 +124,6 @@ public class Pessoa implements Serializable {
 			return false;
 		return true;
 	}
-	
+
+
 }

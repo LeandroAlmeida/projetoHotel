@@ -1,48 +1,50 @@
 package recepção;
 
-import java.io.FileInputStream; 
-import java.io.FileOutputStream; 
-import java.io.IOException; 
-import java.io.ObjectInputStream; 
-import java.io.ObjectOutputStream; 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.RandomAccessFile;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-
 public class GerentePersistencia implements Serializable {
-	
-private static Persistencia instance= null;
 
-public  GerentePersistencia(){ }
+	private static Persistencia instance = null;
 
+	public GerentePersistencia() {
+	}
 
-//singleton 
+	// singleton
 
-public static Persistencia getInstance() {
-	if(instance == null) {
-      // "lazy instantiation"
-      instance = new Persistencia();
-    }
-    return instance;
-}
+	public static Persistencia getInstance() {
+		if (instance == null) {
+			// "lazy instantiation"
+			instance = new Persistencia();
+		}
+		return instance;
+	}
 
-	
-public static void persistir() {
-		
+	public static void persistir() {
+
 		FileOutputStream f = null;
 		ObjectOutputStream stream = null;
-		
+
 		try {
-			f = new FileOutputStream("dados.bin");
+			File fi = new File("dados.bin");
+
+			f = new FileOutputStream(fi);
 			stream = new ObjectOutputStream(f);
 			stream.writeObject(instance);
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
-			
+
 		} finally {
+
 			if (f != null) {
 				try {
 					f.close();
@@ -60,43 +62,50 @@ public static void persistir() {
 		}
 	}
 
-public static void recuperar() {
-	
-	FileInputStream fis = null; 
-	ObjectInputStream stream = null; 
-	try { 
-		fis = new FileInputStream("dados.bin"); 
-		stream = new ObjectInputStream(fis); 
-		instance = (Persistencia) stream.readObject(); 
-		}catch (Exception e) { 
+	public static void recuperar() {
 
-				e.printStackTrace(); 
-		} finally { 
+		File temp = new File("dados.bin");
+		if (temp.exists()) {
+			FileInputStream fis = null;
+			ObjectInputStream stream = null;
+			try {
+				fis = new FileInputStream("dados.bin");
+				stream = new ObjectInputStream(fis);
+				instance = (Persistencia) stream.readObject();
+			} catch (Exception e) {
 
-			if (fis != null) { 
-				try { 
-					fis.close(); 
-				} catch (IOException e) { 
+				e.printStackTrace();
+			} finally {
 
-					e.printStackTrace(); 
-				} 
-			} 
+				if (fis != null) {
+					try {
+						fis.close();
+					} catch (IOException e) {
 
-		if (stream != null) { 
-			try { 
-				stream.close(); 
-			} catch (IOException e) { 
-				e.printStackTrace(); 
-			} 
+						e.printStackTrace();
+					}
+				}
+
+				if (stream != null) {
+					try {
+						stream.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
 		} 
-	} 
-  }
+	}
 
-public static void apagarConteudoArquivo() throws IOException{
-	  // uma instância de RandomAccessFile para leitura e escrita
-      RandomAccessFile arquivo = new RandomAccessFile("dados.bin", "rw");
-      //excluir todo o conteúdo do arquivo
-      arquivo.setLength(0);
-      arquivo.close();    
-}
+	public static void apagarConteudoArquivo() throws IOException {
+		File file = new File("dados.bin");
+		if (file.exists()) {
+			file.delete();
+		}
+	}
+
+	public static void reset() {
+		instance = null;
+	}
+
 }

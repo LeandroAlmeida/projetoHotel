@@ -1,12 +1,14 @@
 package recepção;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public abstract class Estadia {
+public abstract class Estadia implements Serializable {
 	private Date dataEntrada;
 	private Date dataSaida;
 	private Quarto quarto;
 	private Hospede hospede;
+	private Date dataPrimeiroDiaNaoPago;
 	public Hospede getHospede() {
 		return hospede;
 	}
@@ -18,6 +20,7 @@ public abstract class Estadia {
 	}
 	public void setDataEntrada(Date dataEntrada) {
 		this.dataEntrada = dataEntrada;
+		this.dataPrimeiroDiaNaoPago=dataEntrada;
 	}
 	public Date getDataSaida() {
 		return dataSaida;
@@ -31,6 +34,13 @@ public abstract class Estadia {
 	public void setQuarto(Quarto quarto) {
 		this.quarto = quarto;
 	}
+	public Date getDataPrimeiroDiaNaoPago() {
+		return dataPrimeiroDiaNaoPago;
+	}
+
+	public void setDataPrimeiroDiaNaoPago(Date dataDiaNaoPago) {
+		this.dataPrimeiroDiaNaoPago = dataDiaNaoPago;
+	}
 	
 	public abstract String getTipoEstadia();
 	@Override
@@ -39,6 +49,10 @@ public abstract class Estadia {
 		int result = 1;
 		result = prime * result
 				+ ((dataEntrada == null) ? 0 : dataEntrada.hashCode());
+		result = prime
+				* result
+				+ ((dataPrimeiroDiaNaoPago == null) ? 0
+						: dataPrimeiroDiaNaoPago.hashCode());
 		result = prime * result
 				+ ((dataSaida == null) ? 0 : dataSaida.hashCode());
 		result = prime * result + ((hospede == null) ? 0 : hospede.hashCode());
@@ -59,6 +73,11 @@ public abstract class Estadia {
 				return false;
 		} else if (!dataEntrada.equals(other.dataEntrada))
 			return false;
+		if (dataPrimeiroDiaNaoPago == null) {
+			if (other.dataPrimeiroDiaNaoPago != null)
+				return false;
+		} else if (!dataPrimeiroDiaNaoPago.equals(other.dataPrimeiroDiaNaoPago))
+			return false;
 		if (dataSaida == null) {
 			if (other.dataSaida != null)
 				return false;
@@ -76,9 +95,6 @@ public abstract class Estadia {
 			return false;
 		return true;
 	}
-	
-
-	
 	
 	
 }

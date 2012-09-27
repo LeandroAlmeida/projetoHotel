@@ -1,6 +1,8 @@
 package recepção;
 
-public class Quarto {
+import java.io.Serializable;
+
+public class Quarto implements Serializable{
 	
 	private int numero;
 	private Double valor;
@@ -89,5 +91,6 @@ public class Quarto {
 			return false;
 		return true;
 	}
-	
+
+
 }
