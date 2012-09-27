@@ -1,4 +1,4 @@
-package recepção;
+package recepcao;
 
 import java.io.Serializable;
 import java.util.LinkedList;

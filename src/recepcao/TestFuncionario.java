@@ -1,4 +1,4 @@
-package recepção;
+package recepcao;
 
 import static org.junit.Assert.*;
 
